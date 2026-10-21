@@ -1,0 +1,37 @@
+# Sources the radar scans every week.
+# "feeds" are direct RSS/Atom feeds. "searches" become Google News RSS queries,
+# which is the simplest way to watch regulators that do not publish a feed.
+# lang: en (default), es or pt sets the Google News edition.
+# Add a source = add three lines. Primary sources (regulators, central banks) first.
+
+feeds:
+  - name: Federal Reserve press releases
+    region: US rails
+    url: https://www.federalreserve.gov/feeds/press_all.xml
+  - name: BIS speeches and papers
+    region: Global
+    url: https://www.bis.org/doclist/cbspeeches.rss
+
+searches:
+  # Latin America
+  - {name: Banxico, region: LatAm, query: "site:banxico.org.mx remesas OR pagos OR SPEI", lang: es}
+  - {name: CNBV, region: LatAm, query: "site:gob.mx/cnbv fintech OR IFPE OR autorización", lang: es}
+  - {name: Banco Central do Brasil, region: LatAm, query: "Banco Central do Brasil stablecoin OR Pix OR câmbio regulação", lang: pt}
+  - {name: Remesas México, region: LatAm, query: "remesas México pagos transfronterizos stablecoin", lang: es}
+  - {name: LatAm VC, region: LatAm, query: "LAVCA fintech payments", lang: en}
+  - {name: LatAm deals, region: LatAm, query: "Latin America payments OR stablecoin fintech raises OR acquires"}
+  # Africa
+  - {name: Central Bank of Nigeria, region: Africa, query: "Central Bank of Nigeria IMTO OR licence OR FX circular"}
+  - {name: Central Bank of Kenya, region: Africa, query: "Central Bank of Kenya payment service provider licence"}
+  - {name: South African Reserve Bank, region: Africa, query: "SARB crypto OR cross-border payments OR exchange control"}
+  - {name: Africa deals, region: Africa, query: "Africa cross-border payments fintech raises OR acquisition"}
+  - {name: TechCabal payments, region: Africa, query: "site:techcabal.com payments OR remittance OR stablecoin"}
+  # Gulf
+  - {name: CBUAE and VARA, region: Gulf, query: "CBUAE OR VARA stablecoin OR payment token licence"}
+  - {name: Saudi Central Bank, region: Gulf, query: "SAMA fintech OR payments licence"}
+  # Southeast Asia
+  - {name: MAS, region: SEA, query: "MAS stablecoin OR major payment institution licence"}
+  - {name: Bank Indonesia and BSP, region: SEA, query: "Bank Indonesia OR BSP cross-border payments QR OR remittance"}
+  # Cross-cutting
+  - {name: Stablecoin rails, region: Global, query: "stablecoin cross-border payments emerging markets"}
+  - {name: Payments M&A, region: Global, query: "payments company acquisition emerging markets FX"}
